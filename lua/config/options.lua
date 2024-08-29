@@ -3,20 +3,21 @@
 -- Add any additional options here
 
 vim.g.autoformat = false
+vim.opt.wrap = true
 local is_tmux = os.getenv("TMUX")
 -- Not working, don't know why(2024.4.20)
 -- just use TMUX copy mode instead
 if is_tmux then
   vim.g.clipboard = {
-    name = 'tmuxClipboard',
+    name = "tmuxClipboard",
     copy = {
-          ['+'] = {'tmux', 'load-buffer', '-w', '-'},
-          ['*'] = {'tmux', 'load-buffer', '-w', '-'},
+      ["+"] = { "tmux", "load-buffer", "-w", "-" },
+      ["*"] = { "tmux", "load-buffer", "-w", "-" },
     },
     paste = {
-          ['+'] = {'tmux', 'save-buffer', '-'},
-          ['*'] = {'tmux', 'save-buffer', '-'},
-      },
-  cache_enabled = true,
+      ["+"] = { "tmux", "save-buffer", "-" },
+      ["*"] = { "tmux", "save-buffer", "-" },
+    },
+    cache_enabled = true,
   }
 end
